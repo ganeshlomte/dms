@@ -18,7 +18,7 @@
 			<div class="col-lg-2">				
 				<h4>Please Select Desk</h4>
 				<div class="desk-options">
-					<div class="desk-h-t ui-widget-content"></div>
+					<div id="drag-1" class="desk-h-t ui-widget-content"></div>
 					<div class="desk-h-b"></div>
 					<div class="desk-v-l"></div>
 					<div class="desk-v-r"></div>
@@ -36,7 +36,7 @@
 	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
 	<script type="text/javascript" src="js/custom.js"></script>
 	<script type="text/javascript">
-		$( function() {
+		//$( function() {
 		 //    $( "#DragZone" ).sortable({
 		 //      revert: false
 		 //    });
@@ -48,17 +48,44 @@
 		 //      // revert: "invalid"
 			// });
 
-		$( ".desk-h-t" ).draggable({
-			helper: "clone"
-		});
-	    $( "#DragZone" ).droppable({
-	    	accept: '.desk-h-t'
+		// $( ".desk-h-t" ).draggable({
+		// 	helper: "clone"
+		// });
+	 //    $( "#DragZone" ).droppable({
+	 //    	accept: '.desk-h-t'
+	 //    });
+
+$(document).ready(function () {
+	 	var x = null;
+
+	 	//Make element draggable
+	    $(".desk-h-t").draggable({
+	        helper: 'clone',
+	        cursor: 'move',
+	        tolerance: 'fit'
 	    });
 
+	    $("#DragZone").droppable({
 
+            drop: function (e, ui) {
 
+                if ($(ui.draggable)[0].id != "") {
+                    x = ui.helper.clone();
+                ui.helper.remove();
+                x.draggable({
+                    helper: 'original',
+                    containment: '#DragZone',
+                    tolerance: 'fit'
+                });
 
-		});
+                x.appendTo('#DragZone');
+            }
+
+            }
+        });
+
+});
+		//});
 	</script>
 </body>
 </html>
