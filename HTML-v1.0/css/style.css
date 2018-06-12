@@ -18,6 +18,8 @@ input, select, button, input:focus, select:focus, button:focus { outline: none !
 .desk-v-l { background: url("../images/desk-v-l.png") no-repeat; }
 .desk-v-r { background: url("../images/desk-v-r.png") no-repeat; }
 
+.closeIt { color: #fff; cursor: pointer; position: absolute; bottom: 0; right: 0; font-size: 20px; line-height: 1; }
+
 #DragZone { background: #efefef; border: 1px solid #ccc; min-height: 800px; padding: 10px; }
 #DragZone li { display: inline-block;  }
 
