@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="js/html5shiv.min.js"></script>
@@ -17,59 +16,35 @@
 		<div class="row">
 			<div class="col-lg-2">				
 				<h4>Please Select Desk</h4>
+				<!-- desks options list code start here... -->
 				<div class="desk-options">
-					<div id="desk-h-t" class="desk-h-t dragMe dragSigners" data-signer-id="1" data-document-id="1" data-x-cord="0"  data-y-cord="0">
+					<div id="desk-h-t" class="desk-h-t dragMe dragDesk" data-x-cord="0"  data-y-cord="0">
 						<span class="closeIt hideIt">&times;</span>
 					</div>
-					<div id="desk-h-b" class="desk-h-b dragMe dragSigners" data-signer-id="2" data-document-id="1" data-x-cord="0"  data-y-cord="0">
+					<div id="desk-h-b" class="desk-h-b dragMe dragDesk" data-x-cord="0"  data-y-cord="0">
 						<span class="closeIt hideIt">&times;</span>
 					</div>
-					<div id="desk-v-l" class="desk-v-l dragMe dragSigners" data-signer-id="3" data-document-id="1" data-x-cord="0"  data-y-cord="0">
+					<div id="desk-v-l" class="desk-v-l dragMe dragDesk" data-x-cord="0"  data-y-cord="0">
 						<span class="closeIt hideIt">&times;</span>
 					</div>
-					<div id="desk-v-r" class="desk-v-r dragMe dragSigners" data-signer-id="4" data-document-id="1" data-x-cord="0"  data-y-cord="0">
+					<div id="desk-v-r" class="desk-v-r dragMe dragDesk" data-x-cord="0"  data-y-cord="0">
 						<span class="closeIt hideIt">&times;</span>
 					</div>
 				</div>
-				<div id="results"></div>
-				<button id="saveData" class="btn btn-warning">Save Data</button>			
+				<!-- desks options list code end here... -->
+				<button id="saveData" class="btn btn-block btn-warning">Save Data</button>			
 			</div>
 			<div class="col-lg-10">
+				<!-- floorZone for desk dropping area code start here... -->
 				<div id="floorZone"></div>
+				<!-- floorZone for desk dropping area code start here... -->
 			</div>			
 		</div>
 	</div>
 	<!-- all JS called here -->
 	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.12.1.js"></script>
-	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
-	<script type="text/javascript" src="js/custom.js"></script>
-	<script type="text/javascript">
-    
-
-  // this function is simply for updating required fields to database
-  // please ignore this for now
-  /*function updateDraggedPosition(dragEl, stopPosition, document_id, signer_id){
-    $.ajax({
-      url: '/signers/drag_signer',
-      data: {
-        drag_signer: {
-          top: stopPosition.top,
-          left: stopPosition.left,
-          signer_id: signer_id,
-          document_id: document_id,
-          id: dragEl.data("id")
-        }
-      },
-      type: "POST",
-      dataType: "script",
-      success: function(data) {
-        console.log(dragged_signer_id);
-        console.log(dragEl);
-        dragEl.data("id", dragged_signer_id);
-      }
-    })
-  }*/
-</script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>	
 </body>
 </html>
