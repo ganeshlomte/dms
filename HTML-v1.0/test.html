@@ -6,80 +6,149 @@
            google.load("jqueryui", "1.8.16");
         </script>
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="css/new-style.css"/>
         <script src="dragndrop.js" type="text/javascript"></script>
-        <style type="text/css">
-            .col{
-    float:left;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-}
-
-#col1{
-    width:200px;
-    height:500px;
-    border:1px solid black;
-
-}
-
-.drag{
-    width:100px;
-    border:1px solid black;
-    height:40px;
-    position:relative;
-    background-color:red;
-}
-
-#droppable{
-    width:500px;
-    height :500px;
-    border:1px solid black;
-    }
-
-        </style>
     </head>
     <body>
-        <div id="wrapper">
-            <div class = "col" id="col1">
-                <div id="drag1" class="drag"></div>
-                <div id="drag2" class="drag"></div>
-            </div>
-            <div class="col" id ="droppable">
-            </div>
-        </div>
 
+<div id="signer-1" class="dragMe dragSigners" data-signer-id="1" data-document-id="1" data-x-cord="0"  data-y-cord="0">
+    <span>First</span>
+    <span class="closeIt hideIt">x</span>
+  </div>
+  
+  <div id="signer-2" class="dragMe dragSigners" data-signer-id="2" data-document-id="2" data-x-cord="0"  data-y-cord="0">
+    <span>second</span>
+    <span class="closeIt hideIt">x</span>
+  </div>
+</div>
+<div class='document-reader' id="document-reader">
+        
 <script type="text/javascript">
-  $(document).ready(function () {
-
-    var x = null;
-
-    //Make element draggable
-    $(".drag").draggable({
-        helper: 'clone',
-        cursor: 'move',
-        tolerance: 'fit'
+    $(function(){
+      DragSigner();
+      DragMe();
     });
 
-            $("#droppable").droppable({
+  //remove the dragsigner when click on close icon
+  $(".closeIt").live("click", function(){
+    var parent = $(this).parent();
+    parent.remove();
+  });
 
-                drop: function (e, ui) {
+function DragSigner(){
 
-                    if ($(ui.draggable)[0].id != "") {
-                        x = ui.helper.clone();
-                    ui.helper.remove();
-                    x.draggable({
-                        helper: 'original',
-                        containment: '#droppable',
-                        tolerance: 'fit'
-                    });
+    $(".dragSigners").draggable({
+      helper: 'clone',
+      cursor: 'move',
+      tolerance: 'fit',
+      revert: true 
+    });
 
-                    x.appendTo('#droppable');
-                }
+    $("#document-reader").droppable({
+      accept: '.dragSigners',
+      activeClass: "drop-area",
 
-                }
-            });
+      drop: function(e, ui) {
+        var x_cord, y_cord;
+        dragEl = ui.helper.clone();
+        ui.helper.remove();
 
-});
+        document_id   = dragEl.data("document-id");
+        signer_id     = dragEl.data("signer-id");
+        leftPosition  = ui.offset.left - $(this).offset().left;
+        topPosition   = ui.offset.top - $(this).offset().top;
 
+        
+        // debug current dropped position
+        $(".result1").text("Result 1:- top: " + topPosition + ", left: " + leftPosition);
+        dragEl.data("signer-id", signer_id);
+
+        dragEl.draggable({
+          helper: 'original',
+          cursor: 'move',
+          tolerance: 'fit',
+          drop: function (event, ui) {
+            $(ui.draggable).remove();
+          }
+        });
+
+        x_cord = $(dragEl).css('left');
+        y_cord = $(dragEl).css('top');
+        $(dragEl).attr('data-x-cord', x_cord).attr('data-y-cord', y_cord);
+        // append element to #document-reader
+        dragEl.addClass("dragMe");
+        dragEl.removeClass("dragSigners col-sm-6 parent");
+        dragEl.find("span.closeIt").removeClass("hideIt");
+        dragEl.appendTo('#document-reader');
+
+        // update draged element position to database
+        // updateDraggedPosition(dragEl, stopPosition, document_id, signer_id)
+
+        // activate dragging for cloned element
+        DragMe();
+      }
+    });
+  }
+
+
+
+  function DragMe(){
+    var document_id;
+    $(".dragMe").draggable({
+      containment: "#document-reader",
+      cursor: 'move',
+      // opacity: 0.35,
+      stack: $('#document-reader'),
+      scroll: false,
+      appendTo: $("#document-reader"),
+      start: function(event, ui) {
+        startPosition = $(this).position();
+      },
+      stop: function(event, ui) {
+        dragEl        = $(this);
+        stopPosition  = dragEl.position();
+        document_id   = dragEl.data("document-id");
+        signer_id     = dragEl.data("signer-id");
+        x_cord = $(dragEl).css('left');
+        y_cord = $(dragEl).css('top');
+        $(dragEl).attr('data-x-cord', x_cord).attr('data-y-cord', y_cord);
+
+        // debug current dropped position
+        // this position is working perfectly fine.
+        // above drag, drop and clone position should behave like this
+        $(".result2").text("Result 2:- top: " + stopPosition.top + ", left: " + stopPosition.left); 
+          
+        console.log(dragEl.hasClass("parent"))
+        if(!dragEl.hasClass("parent")){
+         // updateDraggedPosition(dragEl, stopPosition, document_id, signer_id)
+        }
+      }
+    });
+  }
+
+  // this function is simply for updating required fields to database
+  // please ignore this for now
+  /*function updateDraggedPosition(dragEl, stopPosition, document_id, signer_id){
+    $.ajax({
+      url: '/signers/drag_signer',
+      data: {
+        drag_signer: {
+          top: stopPosition.top,
+          left: stopPosition.left,
+          signer_id: signer_id,
+          document_id: document_id,
+          id: dragEl.data("id")
+        }
+      },
+      type: "POST",
+      dataType: "script",
+      success: function(data) {
+        console.log(dragged_signer_id);
+        console.log(dragEl);
+        dragEl.data("id", dragged_signer_id);
+      }
+    })
+  }*/
 </script>
 
 

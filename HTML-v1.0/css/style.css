@@ -8,8 +8,6 @@ input, select, button, input:focus, select:focus, button:focus { outline: none !
 /* desk options classes */
 .desk-options div { display: block; text-indent: -9999px; vertical-align: middle; margin: 20px auto; width:75px; height: 75px; }
 
-
-
 /* icon classes */
 .desk-h-t, .desk-h-b { width: 75px; height: 52px; }
 .desk-h-t { background: url("../images/desk-h-t.png") no-repeat; }
@@ -18,10 +16,8 @@ input, select, button, input:focus, select:focus, button:focus { outline: none !
 .desk-v-l { background: url("../images/desk-v-l.png") no-repeat; }
 .desk-v-r { background: url("../images/desk-v-r.png") no-repeat; }
 
-.closeIt { color: #fff; cursor: pointer; position: absolute; bottom: 0; right: 0; font-size: 20px; line-height: 1; }
-
-#DragZone { background: #efefef; border: 1px solid #ccc; min-height: 800px; padding: 10px; }
-#DragZone li { display: inline-block;  }
+#floorZone {border: 1px solid #ccc; min-height: 800px; }
+#floorZone .closeIt {color: #f00; cursor: pointer; position: absolute; font-size: 16px; background:  #fff; border: 1px solid #f00; border-radius:  50%; right: -5px; top: 0; padding:  2px; line-height: .7; font-weight: bold; }
 
 
 

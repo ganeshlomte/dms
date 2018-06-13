@@ -35,7 +35,7 @@
 				<button class="btn btn-warning">Save Data</button>			
 			</div>
 			<div class="col-lg-10">
-				<div id="document-reader" style="border: 1px solid #ccc; min-height: 800px;"></div>
+				<div id="floorZone"></div>
 			</div>			
 		</div>
 	</div>
@@ -65,7 +65,7 @@ function DragSigner(){
       revert: true 
     });
 
-    $("#document-reader").droppable({
+    $("#floorZone").droppable({
       accept: '.dragSigners',
       activeClass: "drop-area",
 
@@ -96,11 +96,11 @@ function DragSigner(){
         x_cord = $(dragEl).css('left');
         y_cord = $(dragEl).css('top');
         $(dragEl).attr('data-x-cord', x_cord).attr('data-y-cord', y_cord);
-        // append element to #document-reader
+        // append element to #floorZone
         dragEl.addClass("dragMe");
         dragEl.removeClass("dragSigners col-sm-6 parent");
         dragEl.find("span.closeIt").removeClass("hideIt");
-        dragEl.appendTo('#document-reader');
+        dragEl.appendTo('#floorZone');
 
         // update draged element position to database
         // updateDraggedPosition(dragEl, stopPosition, document_id, signer_id)
@@ -116,12 +116,12 @@ function DragSigner(){
   function DragMe(){
     var document_id;
     $(".dragMe").draggable({
-      containment: "#document-reader",
+      containment: "#floorZone",
       cursor: 'move',
       // opacity: 0.35,
-      stack: $('#document-reader'),
+      stack: $('#floorZone'),
       scroll: false,
-      appendTo: $("#document-reader"),
+      appendTo: $("#floorZone"),
       start: function(event, ui) {
         startPosition = $(this).position();
       },

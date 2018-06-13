@@ -1,0 +1,254 @@
+.navbar .btn, .navbar .btn-group {
+    margin-top: 12px;
+}
+
+body{
+    background: #EEE;   
+}
+
+header, .navbar-default{
+    background: #FFF;
+}
+
+header{
+    border-bottom: 2px solid #CCC;
+}
+
+.navbar-default{
+    border: 0px;
+}
+/* end nav and body section every page*/
+
+
+
+/*heading section every page*/
+.headerbox {
+    background-color: #EFEBFC;
+    border: solid #E0DEDE 1px;
+    color: #0C002E;
+}
+
+.bodybox {
+    background-color: white;
+    border: solid #E0DEDE 1px;
+}
+/* end heading section every page*/
+
+
+
+
+/* button color */
+.navbtnstyle {
+    background-color: #24246B;
+    color: white;
+}
+a.navbtnstyle:hover{color: white;}
+
+.btnaddmore {
+    background-color: #55555E;
+    color: white;
+}
+a.btnaddmore:link{color: white;}
+a.btnaddmore:hover{color: white;}
+a.btnaddmore:visited{color:white;} 
+a.btnaddmore:active{color: white;}
+
+
+.btncancel {
+    background-color: #31317A;
+    color: white;
+}
+a.btncancel:link{color: white;}
+a.btncancel:hover{color: white;}
+a.btncancel:visited{color:white;} 
+a.btncancel:active{color: white;}
+
+.btnsave {
+    background-color: #0E0E2B;
+    color: white;
+}
+input.btnsave:hover {
+    background: transparent;
+    background-color: #0E0E2B;
+    color: white;  
+}
+
+.btnloginsave {
+    background-color: #31317A;
+    color: white;
+}
+input.btnloginsave:hover {
+    background: transparent;
+    background-color: #31317A;
+    color: white;  
+}
+
+.signinlink {
+    color: #31317A;
+}
+a.signinlink:link{color: #31317A;}
+a.signinlink:hover{color: #31317A;}
+a.signinlink:visited{color:#31317A;} 
+a.signinlink:active{color: #31317A;}
+/* end button color */
+
+
+
+
+
+
+
+/* errors in view page */
+#error_explanation{
+    border: 1px solid red;
+    background-color: #FFDFDF;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+#error_explanation h2{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#error_explanation ul, #error_explanation li{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    color: red;
+    font-size: 13px;
+}
+
+.error{
+    color: red;
+}
+/* end errors in view page */
+
+
+
+
+/*sortable drag drop*/
+#sortable1, #sortable2 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+}
+
+#sortable1 li, #sortable2 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px 15px;
+    font-size: 1.2em;
+    width: 120px;
+    background: #2E2E33;
+    color: #FFF;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#ajax_loader_big_div {
+    display:none;
+    height:auto;
+    left:35%;
+    position:fixed;
+    top:40%;
+    z-index:999999999999;
+    padding: 10px 30px;
+    background: #F1F1F1;
+    border: 1px solid #111;
+}
+
+
+/*end sortable drag drop*/
+
+
+
+
+
+/*responsive iframe*/
+#signthis-document-viewer{
+    width: 100%;
+    height: 600px;
+}
+
+.document-reader{
+    border: 1px solid #CCC; min-height: 800px;
+}
+.page-number{
+    margin-bottom: 20px;
+}
+
+.dragSigners, .dragMe{
+    margin: 5px;
+    padding: 5px;
+    background: #2E2E33;
+    color: #FFF;
+    text-align: center;
+    border-radius: 3px;
+    cursor: move;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 12px;
+}
+.dragSigners{
+    z-index: 999;
+}
+.dragMe{
+    position: relative;
+}
+.closeIt{
+    background: #FFF;
+    color: #111;
+    padding: 0 2px;
+    cursor: pointer;
+}
+/*end responsive iframe*/
+
+/*table rows color*/
+.even{background-color: #F5F5F5;}
+/*end table rows color*/
+
+.error{
+    color: red;
+    font-size: 12px;
+}
+
+#handwriting_scroll {
+    height: 100px;
+    position: relative;
+    overflow: auto;
+}
+
+.signature-section{
+    border-left: 1px solid blue;
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+    border-radius: 5px;
+    padding: 5px;
+}
+.signature-section img{
+    max-width: 75px;
+}
+
+.main-wrapper{
+    max-height: 600px;
+    overflow: auto;
+}
+
+.sidebar{
+    position: fixed;
+}
+
+.document-content{
+    position: relative;
+    left: 325px;
+}
+.drop-area {
+    background-color:#afd1b2;
+}
+.hideIt {
+    visibility: hidden;
+}
